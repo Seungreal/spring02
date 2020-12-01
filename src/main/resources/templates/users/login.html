@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>로그인</h1>
+    <form action="">
+        <table>
+            <tr>
+                <td>Id</td>
+                <td><input id="userid" type="text"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input id="userid" type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="login-btn">로그인</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        document.getElementById('login-btn').
+                addEventListener('click',e=>{
+                    e.preventDefault()
+                    $.ajax({
+                        url:'',
+                        type:'',
+                        data:'',
+                        dataType:'',
+                        contentType:'',
+                        success:d=>{},
+                        error:e=>{}
+                    })
+                })
+    </script>
+</body>
+</html>
