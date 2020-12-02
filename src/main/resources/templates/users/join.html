@@ -50,7 +50,7 @@
                 dataType:'json',
                 contentType:'application/json',
                 success:d=>{if(d.name==='FAILURE'){}
-                            else{alert(`가입 성공`)}},
+                            else{alert(`${d.name}가입 성공`)}},
                 error:e=>{alert(`${e}을 이유로 전송실패`)}
             })
         })

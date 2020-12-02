@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>로그인</h1>
@@ -15,7 +16,7 @@
             </tr>
             <tr>
                 <td>Password</td>
-                <td><input id="userid" type="text"></td>
+                <td><input id="password" type="text"></td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -29,13 +30,15 @@
                 addEventListener('click',e=>{
                     e.preventDefault()
                     $.ajax({
-                        url:'',
-                        type:'',
-                        data:'',
-                        dataType:'',
-                        contentType:'',
-                        success:d=>{},
-                        error:e=>{}
+                        url:'/users/login',
+                        type:'POST',
+                        data:JSON.stringify({userid:document.getElementById('userid').value,
+                                            password:document.getElementById('password').value}),
+                        dataType:'json',
+                        contentType:'application/json',
+                        success:d=>{if(d.name!=="FAILURE"){alert(`${d.name}님 환영합니다`)}
+                                    else{alert(`로그인 실패`)}},
+                        error:e=>{alert(`${e}`)}
                     })
                 })
     </script>
