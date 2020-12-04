@@ -44,7 +44,7 @@
                 dataType:'json',
                 contentType:'application/json',
                 success:d=>{if(d.message==='SUCESS'){
-                                alert(`회원가입 성공`)
+                                location.href='/forms/users/login'
                             }else{alert(`회원가입 실패`)}},
                 eorror:e=>{alert(`${e}`)}
             })

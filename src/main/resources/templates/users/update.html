@@ -9,8 +9,49 @@
 <body>
     <h1>회원정보수정</h1>
     <a href="#" id="home">홈으로</a>
+    <form action="">
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td id="userid"></td>
+            </tr>
+            <tr>
+                <td>새 비밀번호</td>
+                <td><input id="password" type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="confirm">확인</button>
+                </td>
+            </tr>
+        </table>
+    </form>
     <script>
         document.getElementById('home').addEventListener('click',e=>{location.href='/'})
+        document.getElementById('userid').innerHTML=sessionStorage.getItem('loginUserid')
+        document.getElementById('confirm').addEventListener('click',e=>{
+            e.preventDefault()
+            alert(`수정하려는 아이디: ${sessionStorage.getItem('loginUserid')}`)
+            $.ajax({
+                url:'/users',
+                type:'PUT',
+                data:JSON.stringify({
+                    userid:document.getElementById('userid').innerText,
+                    password:document.getElementById('password').value
+                }),
+                dataType:'json',
+                contentType:'application/json',
+                success:d=>{
+                    if(d.message==='SUCCESS'){
+                        location.href='/forms/users/mypage'
+                    }else{
+                        location.href='/forms/users/update'
+                    }
+
+                },
+                error:e=>{alert(`${e}`)}
+            })
+        })
     </script>
 </body>
 </html>
